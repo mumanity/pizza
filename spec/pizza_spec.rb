@@ -19,6 +19,8 @@ describe Pizza do
       pizza = Pizza.new
 
       expect(pizza.toppings.size).to eq(1)
+      expect(pizza.toppings).to be_a(Array)
+      expect(pizza.toppings.first).to be_a(Topping)
       expect(pizza.toppings.first.name).to eq('cheese')
     end
   end
