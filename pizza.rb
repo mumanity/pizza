@@ -1,12 +1,19 @@
 class Pizza
-  attr_accessor :toppings, :size
+  attr_accessor :toppings, :size, :new_topping
 
-  def initialize(toppings=[Topping.new("cheese")])
+  def initialize(toppings=[Topping.new("cheese", vegetarian: true)])
     @toppings = toppings
   end
 
-  def size
+  def vegetarian?
+    @toppings.all? do |x|
+      x.vegetarian == true
+    end
+  end
 
+  def add_topping(new_topping)
+    @new_topping = new_topping
+    @toppings << new_topping
   end
 
 end
@@ -19,11 +26,5 @@ class Topping
     @name = name
     @vegetarian = vegetarian
   end
-
-  # name - the String name of the Topping
-
-
-  # returns a new Topping object
-
 
 end
