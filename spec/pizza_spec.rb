@@ -53,6 +53,30 @@ describe Pizza do
       expect(pizza.vegetarian?).to eq(false)
     end
   end
+
+  describe '.deliver!' do
+    it "marks a delivery time on pizza for 30 min from start" do
+
+    deliver_by = Time.now + 30 * 60
+    omnom = Pizza.new
+    omnom.deliver!
+
+    expect(omnom.delivery_time).to be_within(10).of(deliver_by)
+    end
+
+  end
+
+  describe '.late?' do
+    it "should return true if it is past the delivery time, false otherwise" do
+
+    gimmeh = Pizza.new
+    gimmeh.deliver!
+    gimmeh.late?
+
+    expect(gimmeh.late?).to eq('on time')
+  end
+end
+
 end
 
 describe Topping do
