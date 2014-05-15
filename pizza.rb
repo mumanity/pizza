@@ -21,7 +21,7 @@ class Pizza
   end
 
   def late?
-    if @delivery_time <= Time.now - 30 * 60
+    if @delivery_time <= Time.now
       'late'
     else
       'on time'
